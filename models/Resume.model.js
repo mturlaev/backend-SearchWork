@@ -5,14 +5,16 @@ const resumesSchema = mongoose.Schema({
   surname: String,
   age: Number,
   image: String,
-  phone: Number,
+  phone: String,
   email: String,
   address: String,
-  categoryId: {
-    // stack ю хьун Мохьмад
-    type: mongoose.SchemaTypes.ObjectId,
-    ref: "Category",
-  },
+  categoryId: [
+    {
+      // stack ю хьун Мохьмад
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: "Category",
+    },
+  ],
   userId: {
     type: mongoose.SchemaTypes.ObjectId,
     ref: "User",
@@ -20,6 +22,10 @@ const resumesSchema = mongoose.Schema({
   position: String,
   experience: Number,
   education: Boolean,
+  counter: {
+    type: Number,
+    default: 0,
+  },
 });
 
 const Resume = mongoose.model("Resume", resumesSchema);
