@@ -10,7 +10,7 @@ class userService  {
   async registration (email, password)  {
     const candidate = await User.findOne( {email} )
     if ( candidate) {
-      throw ApiError.BadRequest(`Пользователь с таким почтовым адресом ${email} уже существует`)
+      throw ApiError.BadRequest(`Пользователь с таким почтовым адресом уже существует`)
     }
     const hashPassword = await bcrypt.hash(password, 10);
     const activationLink = uuid.v4();
