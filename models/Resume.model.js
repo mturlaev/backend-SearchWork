@@ -7,7 +7,7 @@ const resumesSchema = mongoose.Schema({
   image: String,
   phone: String,
   email: String,
-  address: String,
+  city: String,
   categoryId: [
     {
       // stack ю хьун Мохьмад
