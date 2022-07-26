@@ -25,7 +25,7 @@ module.exports.resumesController = {
         name: req.body.name,
         surname: req.body.surname,
         age: req.body.age,
-        image: req.body.image,
+        image: req.file.path,
         phone: req.body.phone,
         email: req.body.email,
         city: req.body.city,

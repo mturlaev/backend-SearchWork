@@ -4,8 +4,13 @@ const cors = require("cors");
 const cookieParser = require('cookie-parser');
 const errorMiddleware = require('./middlewares/error.middleware')
 require("dotenv").config();
+const path = require("path")
 
 const app = express();
+app.use(
+  "/images",
+  express.static(path.resolve(__dirname + "/images"))
+)
 
 app.use(cors());
 app.use(express.json());
