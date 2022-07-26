@@ -10,11 +10,11 @@ class userService  {
   async registration (email, password)  {
     const candidate = await User.findOne( {email} )
     if ( candidate) {
-      throw ApiError.BadRequest(`Пользователь с таким почтовым адресом ${email} уже существует`)
+      throw ApiError.BadRequest(`Пользователь с таким почтовым адресом уже существует`)
     }
     const hashPassword = await bcrypt.hash(password, 10);
     const activationLink = uuid.v4();
-    const user = await User.create({email, password: hashPassword, activationLink, role: req.body.role});
+    const user = await User.create({email, password: hashPassword, activationLink});
     await mailService.sendActivationMail(email, `${process.env.API_URL}/activate/${activationLink}`);
 
     const userDto = new UserDto(user);

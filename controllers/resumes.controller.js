@@ -30,7 +30,7 @@ module.exports.resumesController = {
         email: req.body.email,
         address: req.body.address,
         categoryId: req.body.categoryId,
-        userId: req.body.userId,
+        userId: req.user.id,
         position: req.body.position,
         experience: req.body.experience,
         education: req.body.education,
