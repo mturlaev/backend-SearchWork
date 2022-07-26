@@ -1,4 +1,4 @@
-const Category = require("../models/Categories.model");
+const Category = require("../models/Category.model");
 
 module.exports.categoriesController = {
   getCategory: async (req, res) => {
@@ -13,7 +13,7 @@ module.exports.categoriesController = {
   postCategory: async (req, res) => {
     try {
       const category = await Category.create({
-        text: req.body.text,
+        name: req.body.name,
       });
       res.json(category);
     } catch (error) {
@@ -24,7 +24,7 @@ module.exports.categoriesController = {
   patchCategory: async (req, res) => {
     try {
       const category = await Category.findByIdAndUpdate(req.params.id, {
-        text: req.body.text,
+        name: req.body.name,
       });
       res.json(category);
     } catch (error) {

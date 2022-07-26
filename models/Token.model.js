@@ -9,7 +9,7 @@ const tokenSchema = mongoose.Schema({
     type: String,
     required: true,
   }
-});
+}); 
 
 const Token = mongoose.model("Token", tokenSchema);
 
