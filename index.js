@@ -1,16 +1,12 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const cookieParser = require('cookie-parser');
-const errorMiddleware = require('./middlewares/error.middleware')
+const cookieParser = require("cookie-parser");
+const errorMiddleware = require("./middlewares/error.middleware");
 require("dotenv").config();
-const path = require("path")
+const path = require("path");
 
 const app = express();
-app.use(
-  "/images",
-  express.static(path.resolve(__dirname + "/images"))
-)
 
 app.use(cors());
 app.use(express.json());
@@ -18,19 +14,19 @@ app.use(cookieParser());
 app.use(require("./routes/index"));
 app.use(errorMiddleware);
 
-
+app.use("/images", express.static(path.resolve(__dirname + "/images")));
 
 const start = async () => {
   try {
     mongoose.connect(process.env.MONGO_SERVER, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-    })
+    });
     app.listen(process.env.PORT, () => {
-    console.log("сервер запущен");
-  });
+      console.log("сервер запущен");
+    });
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
-start()
+};
+start();
