@@ -8,13 +8,7 @@ const resumesSchema = mongoose.Schema({
   phone: String,
   email: String,
   city: String,
-  categoryId: [
-    {
-      // stack ю хьун Мохьмад
-      type: mongoose.SchemaTypes.ObjectId,
-      ref: "Category",
-    },
-  ],
+  categoryId: [{ type: mongoose.SchemaTypes.ObjectId, ref: "Category" }],
   userId: {
     type: mongoose.SchemaTypes.ObjectId,
     ref: "User",

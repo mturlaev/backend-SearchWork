@@ -39,8 +39,9 @@ module.exports.vacanciesController = {
         salary: req.body.salary,
         city: req.body.city,
         company: req.body.company,
-        userId: req.body.userId,
+        // userId: req.user.id,
         categoryId: req.body.categoryId,
+        checked: req.body.checked
       });
       res.json(vacancy)
     } catch (error) {
@@ -55,9 +56,10 @@ module.exports.vacanciesController = {
         salary: req.body.salary,
         city: req.body.city,
         company: req.body.company,
-        userId: req.body.userId,
+        // userId: req.user.id,
         categoryId: req.body.categoryId,
-        })
+        checked: req.body.checked
+        }, {new:true})
         res.json(vacancy)
     } catch (error) {
         res.json(error.message)

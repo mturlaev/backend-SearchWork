@@ -16,13 +16,14 @@ module.exports.responsesController = {
         try {
             const response = await Response.create({
                 name: req.body.name,
-                user: req.body.user,
+                // user: req.user.id,
                 resume: req.body.resume,
                 vacancy: req.body.vacancy,
+                checked: req.body.checked
             });
             res.json(response)
         } catch (error) {
-            resjson(error.message)
+            res.json(error.message)
         }
     },
     patchResponse: async (req, res) => {

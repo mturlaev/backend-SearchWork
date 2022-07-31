@@ -10,4 +10,5 @@ router.post("/category", categoriesController.postCategory);
 router.patch("/category/:id", categoriesController.patchCategory);
 router.delete("/category/:id", categoriesController.deleteCategory);
 
+
 module.exports = router;
