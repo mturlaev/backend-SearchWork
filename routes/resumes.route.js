@@ -12,3 +12,4 @@ router.patch("/resume/:id", resumesController.patchResume);
 router.delete("/resume/:id", resumesController.deleteResume);
 
 module.exports = router;
+ 
