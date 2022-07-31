@@ -15,7 +15,6 @@ const resumesSchema = mongoose.Schema({
   },
   position: String,
   experience: Number,
-  education: Boolean,
   counter: {
     type: Number,
     default: 0,

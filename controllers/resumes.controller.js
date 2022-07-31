@@ -34,8 +34,7 @@ module.exports.resumesController = {
         categoryId: req.body.categoryId,
         // userId: req.user.id,
         position: req.body.position,
-        experience: req.body.experience,
-        education: req.body.education,
+        experience: req.body.experience,        
       });
       return res.json(resume);
     } catch (e) {
@@ -56,7 +55,6 @@ module.exports.resumesController = {
         userId: req.user.id,
         position: req.body.position,
         experience: req.body.experience,
-        education: req.body.education,
       });
       res.json(resume);
     } catch (e) {
