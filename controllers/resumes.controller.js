@@ -30,10 +30,9 @@ module.exports.resumesController = {
         email: req.body.email,
         city: req.body.city,
         categoryId: req.body.categoryId,
-        userId: req.user.id,
+        // userId: req.user.id,
         position: req.body.position,
-        experience: req.body.experience,
-        education: req.body.education,
+        experience: req.body.experience,        
       });
       res.json(resume);
     } catch (e) {
@@ -54,7 +53,6 @@ module.exports.resumesController = {
         userId: req.user.id,
         position: req.body.position,
         experience: req.body.experience,
-        education: req.body.education,
       });
       res.json(resume);
     } catch (e) {

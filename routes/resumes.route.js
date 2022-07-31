@@ -13,3 +13,4 @@ router.patch("/resume/:id", authMiddleware,resumesController.patchResume);
 router.delete("/resume/:id", authMiddleware,resumesController.deleteResume);
 
 module.exports = router;
+ 
