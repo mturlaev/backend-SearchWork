@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const { vacanciesController } = require("../controllers/vacancies.controller");
 
+
 const router = Router()
 
 router.get("/vacancy", vacanciesController.getVacancies)

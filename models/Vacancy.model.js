@@ -20,6 +20,10 @@ const vacancySchema = mongoose.Schema({
     type: Number,
     default: 0,
   },
+  checked: {
+    type: Boolean,
+    default: false,
+  }
 });
 
 const Vacancy = mongoose.model("Vacancy", vacancySchema);

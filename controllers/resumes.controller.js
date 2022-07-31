@@ -12,12 +12,14 @@ module.exports.resumesController = {
     }
   },
   getByCategories: async (req, res) => {
-      try {
-          const resume = await Resume.find({ categoryId: req.params.id }).populate("categoryId").populate("userId")
-          res.json(resume)
-      } catch (e) {
-          res.json(e.message)
-      }
+    try {
+      const resume = await Resume.find({ categoryId: req.params.id })
+        .populate("categoryId")
+        .populate("userId");
+      res.json(resume);
+    } catch (e) {
+      res.json(e.message);
+    }
   },
   postResume: async (req, res) => {
     try {
@@ -30,14 +32,14 @@ module.exports.resumesController = {
         email: req.body.email,
         city: req.body.city,
         categoryId: req.body.categoryId,
-        userId: req.user.id,
+        // userId: req.user.id,
         position: req.body.position,
         experience: req.body.experience,
         education: req.body.education,
       });
-      res.json(resume);
+      return res.json(resume);
     } catch (e) {
-      res.json(e.message);
+      return res.json({ error: e.message });
     }
   },
   patchResume: async (req, res) => {

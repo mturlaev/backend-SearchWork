@@ -1,7 +1,10 @@
 const mongoose = require("mongoose");
 
 const responseschema = mongoose.Schema({
-    name: String,
+    name: {
+        type: String,
+        default: "Откликнуться"
+    },
     user: {
         type: mongoose.SchemaTypes.ObjectId,
         ref: "User"
@@ -14,6 +17,10 @@ const responseschema = mongoose.Schema({
         type: mongoose.SchemaTypes.ObjectId,
         ref: "Resume"
     },
+    checked: {
+        type: Boolean,
+        default: false
+    }
 })
 
 const Response = mongoose.model("Response", responseschema);

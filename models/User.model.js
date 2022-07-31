@@ -20,6 +20,10 @@ const userSchema = mongoose.Schema({
   role: {
     type: String,
     default: 'workman'
+  },
+  resume: {
+    type: mongoose.SchemaTypes.ObjectId,
+    ref: "Resume"
   }
 });
 
