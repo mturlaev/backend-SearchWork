@@ -31,11 +31,16 @@ module.exports.resumesController = {
         phone: req.body.phone,
         email: req.body.email,
         city: req.body.city,
-        categoryId: req.body.categoryId,
-        // userId: req.user.id,
+        userId: req.user.id,
         position: req.body.position,
-        experience: req.body.experience,        
+        experience: req.body.experience,
+        categoryId: JSON.parse(req.body.categoryId),
       });
+
+      // // const resp = await Resume.findById(resume._id)
+      // const update = await Resume.find({ _id: resume._id }).update({
+      //   categoryId: req.body.categoryId,
+      // });
       return res.json(resume);
     } catch (e) {
       return res.json({ error: e.message });
@@ -43,22 +48,19 @@ module.exports.resumesController = {
   },
   patchResume: async (req, res) => {
     try {
-      const resume = await Resume.findByIdAndUpdate(req.params.id, {
-        name: req.body.name,
-        surname: req.body.surname,
-        age: req.body.age,
-        image: req.body.image,
-        phone: req.body.phone,
-        email: req.body.email,
-        city: req.body.city,
-        categoryId: req.body.categoryId,
-        userId: req.user.id,
-        position: req.body.position,
-        experience: req.body.experience,
-      });
+      const resume = await Resume.findByIdAndUpdate(
+        req.params.id,
+        {
+          $push: {
+            categoryId: req.body.categoryId,
+          },
+        },
+        { new: true }
+      );
+
       res.json(resume);
     } catch (e) {
-      res.json(e.message);
+      res.json({ error: e.message });
     }
   },
   deleteResume: async (req, res) => {
