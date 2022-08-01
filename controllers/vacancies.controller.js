@@ -39,7 +39,7 @@ module.exports.vacanciesController = {
         salary: req.body.salary,
         city: req.body.city,
         company: req.body.company,
-        // userId: req.user.id,
+        userId: req.user.id,
         categoryId: req.body.categoryId,
         checked: req.body.checked
       });
@@ -56,7 +56,7 @@ module.exports.vacanciesController = {
         salary: req.body.salary,
         city: req.body.city,
         company: req.body.company,
-        // userId: req.user.id,
+        userId: req.user.id,
         categoryId: req.body.categoryId,
         checked: req.body.checked
         }, {new:true})
@@ -71,6 +71,18 @@ module.exports.vacanciesController = {
         res.json("Вакансия удалена")
     } catch (error) {
         res.json(error.message)
+    }
+  },
+
+  addResponse: async (req, res) => {
+    try {
+       const response =  await Vacancy.findByIdAndUpdate(req.params.id, {
+          $push:{
+            responses: req.user.id
+          } }, {new: true});
+        return res.json(response)
+    } catch (error) {
+       return res.json({error: error.message})
     }
   },
 };

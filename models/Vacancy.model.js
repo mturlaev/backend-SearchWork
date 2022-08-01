@@ -6,6 +6,7 @@ const vacancySchema = mongoose.Schema({
   salary: Number,
   city: String,
   company: String,
+  
   userId: {
     type: mongoose.SchemaTypes.ObjectId,
     ref: "User",
@@ -20,10 +21,12 @@ const vacancySchema = mongoose.Schema({
     type: Number,
     default: 0,
   },
-  checked: {
-    type: Boolean,
-    default: false,
-  }
+  responses: [
+    {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: "User",
+    },
+  ],
 });
 
 const Vacancy = mongoose.model("Vacancy", vacancySchema);
